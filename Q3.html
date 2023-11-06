@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+</head>
+<body>
+  <div id="login-form">
+    <h2>Login</h2>
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+    <br>
+    <button onclick="loginOrLogout()">Login/Logout</button>
+    <p id="login-status">User not logged in</p>
+  </div>
+
+  <script>
+    class User {
+      constructor() {
+        this.isLoggedIn = false;
+      }
+
+      login(email, password) {
+        if (email !== '' && password !== '') {
+          this.isLoggedIn = true;
+        }
+      }
+
+      logout() {
+        this.isLoggedIn = false;
+      }
+    }
+
+    let user = new User();
+
+    function loginOrLogout() {
+      let emailInput = document.getElementById('email');
+      let passwordInput = document.getElementById('password');
+      let loginStatus = document.getElementById('login-status');
+
+      if (user.isLoggedIn) {
+        user.logout();
+        loginStatus.textContent = 'User logged out';
+        emailInput.value = '';
+        passwordInput.value = '';
+      } else {
+        user.login(emailInput.value, passwordInput.value);
+        if (user.isLoggedIn) {
+          loginStatus.textContent = 'User logged in';
+        } else {
+          loginStatus.textContent = 'Login failed';
+        }
+      }
+    }
+  </script>
+</body>
+</html>

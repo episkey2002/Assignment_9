@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Divisibility Checker</title>
+</head>
+<body>
+    <h1>Divisibility Checker</h1>
+    <label for="numberInput">Enter a number:</label>
+    <input type="number" id="numberInput">
+    <button onclick="checkDivisibility()">Check Divisibility</button>
+    <p id="result"></p>
+
+    <script>
+        function checkDivisibility() {
+            let number = parseInt(document.getElementById('numberInput').value);
+
+            if (isNaN(number)) {
+                document.getElementById('result').textContent = 'Please enter a valid number.';
+            } else if (number % 3 === 0) {
+                document.getElementById('result').textContent = `${number} is divisible by 3.`;
+            } else {
+                document.getElementById('result').textContent = `${number} is not divisible by 3.`;
+            }
+        }
+    </script>
+</body>
+</html>
